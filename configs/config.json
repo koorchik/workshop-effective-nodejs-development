@@ -1,0 +1,11 @@
+{
+    "db" : {
+        "username" : "{{DB_USERNAME}}",
+        "password" : "{{DB_PASSEWORD}}",
+        "database" : "{{DB_DATABASE}}",
+        "dialect"  : "mysql",
+        "host"     : "{{DB_HOST}}",
+        "port"     : "{{DB_PORT}}"
+    },
+    "appPort": {{APP_PORT}}
+}
