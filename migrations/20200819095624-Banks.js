@@ -16,6 +16,14 @@ module.exports = {
                 onDelete   : 'RESTRICT',
                 allowNull  : true
             },
+            mainBankId : {
+                type       : Sequelize.UUID,
+                references : { model: 'Banks', key: 'id' },
+                onUpdate   : 'RESTRICT',
+                onDelete   : 'RESTRICT',
+                allowNull  : true
+            },
+
             createdAt : { type: Sequelize.DATE, allowNull: false },
             updatedAt : { type: Sequelize.DATE, allowNull: false }
         });

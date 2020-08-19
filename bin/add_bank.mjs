@@ -6,14 +6,14 @@ import initModels from '../lib/domain-model/initModels.mjs';
 
 const doc =
 `Usage:
-   add_bank.mjs --code=<code> --name=<name> [--country=<country-code>]
+   add_bank.mjs --code=<code> --name=<name> --country=<country>
    add_bank.mjs -h | --help
 
 Options:
-   -h --help                     Show this screen.
-   --code <code>                 Bank code.
-   --name <name>                 Bank name.
-   --country <country-code>      Country ISO Code.
+   -h --help            Show this screen.
+   --code <code>        Bank code.
+   --name <name>        Bank name.
+   --country <country>  Country ISO Code.
 `;
 
 main(docopt.docopt(doc));
@@ -23,12 +23,13 @@ async function main(opts) {
     const bankData = {
         code        : opts['--code'],
         name        : opts['--name'],
-        countryCode : opts['--country-code'] || 'UA'
-
+        countryCode : opts['--country']
     };
 
     try {
-        await Bank.create(bankData);
+        const bank = await Bank.create(bankData);
+
+        console.log('BANK ADDED ID=[%s]', bank.id);
         process.exit(0);
     } catch (error) {
         console.error(error);
