@@ -11,8 +11,8 @@ const doc =
 
 Options:
    -h --help                 Show this screen.
-   -l --email <email>        Login for new admin.
-   -p --password <password>  Password for new admin.
+   -l --email <email>        Login for new user.
+   -p --password <password>  Password for new user.
    -d --drop                 Drop database first.
 `;
 
@@ -25,7 +25,7 @@ async function dropAllUsers() {
 async function main(opts) {
     initModels(config.db);
     const userData = {
-        email          : opts['--email'] ? opts['--email'] : 'admin@mail.com',
+        email          : opts['--email'] ? opts['--email'] : 'user@mail.com',
         password       : opts['--password'],
         agreeWithTerms : true
     };
